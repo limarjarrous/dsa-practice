@@ -12,17 +12,16 @@ class Solution:
             return hours
 
 
-        left = 1
-        right = max(piles)
-        bananas_per_hour = max(piles)
-        while left <= right:
-            mid = (right + left) // 2
-            required_hours = get_hours(mid)
+        min_speed = 1
+        max_speed = max(piles)
+
+        while min_speed <= max_speed:
+            speed = (max_speed + min_speed) // 2
+            required_hours = get_hours(speed)
             
             if required_hours <= h:
-                bananas_per_hour = mid
-                right = mid - 1
+                max_speed = speed - 1
             else:
-                left = mid + 1
+                min_speed = speed + 1
         
-        return bananas_per_hour
+        return min_speed
