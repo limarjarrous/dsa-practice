@@ -7,11 +7,10 @@ class Solution:
 
         left = 0
 
-        for right in range(len(s)):
-            freq[s[right]] = freq.get(s[right], 0) + 1
+        for right, char in enumerate(s):
+            freq[char] = freq.get(char, 0) + 1
             
-            if freq[s[right]] > max_freq:
-                max_freq = freq[s[right]]
+            max_freq = max(max_freq, freq[char])
             
             curr_len = right - left + 1
             while curr_len - max_freq > k:
